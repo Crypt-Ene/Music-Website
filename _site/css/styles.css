@@ -1,0 +1,139 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #313131;
+    color: #d9d9d9
+}
+
+button{
+    display: none;
+}
+
+.active-audio{
+    filter: sepia() saturate(50) hue-rotate(0deg);
+    transition: 5s;
+    animation: colorcycle 10s linear infinite;
+}
+
+#menu-bar{
+    position: relative;
+    background-color: #212121;
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.subheading{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#music-button{
+    height: 50px;
+    width: 50px;
+    margin-top: 9px;
+    margin-left: 10px;
+}
+
+#music-checkbox{
+    display: none;
+}
+
+#page-title{
+    text-align: center;
+    font-size: 75px;
+    font-weight: 600;
+    margin-top: 30px;
+    color: transparent;
+    background: url(../images/placeholder.png);
+    background-position-x: 0px;
+    background-size: 640px, 640px;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: scrollimage 200s linear infinite;
+}
+
+#music-menu{
+    position: absolute;
+    height: calc(100vh - 60px);
+    width: 220px;
+    background-color: rgba(20, 20, 20, 100);
+    z-index: 2;
+    top: -100vh;
+    transition: 1s;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-width: 5px;
+    border-color: grey;
+    overflow-y: scroll;
+}
+
+#music-menu::-webkit-scrollbar{
+    display: none;
+}
+
+#music-checkbox:checked ~ #music-menu{
+	top: 60px;
+    left: 0px;
+    border-bottom-width: 0px;
+}
+
+#music-list li{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 10px 14px;
+    border-style: solid none;
+    border-width: 1px;
+}
+
+#music-list li p{
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.audio-tab{
+    display: none;
+}
+
+.audio-button{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.audio-button img{
+    height: 50px;
+    width: 50px;
+}
+
+.audio-button:active{
+    scale: 1.1;
+}
+
+@keyframes scrollimage{
+    0% {background-position-x: 0px; background-position-y: 0px;}
+    100% {background-position-x: 640px; background-position-y: 640px;}
+  }
+
+@keyframes colorcycle{
+    0% {filter: sepia() saturate(100) hue-rotate(0deg);}
+    50% {filter: sepia() saturate(100) hue-rotate(180deg);}
+    100% {filter: sepia() saturate(100) hue-rotate(360deg);}
+}
