@@ -7,12 +7,16 @@ songupdate = function(target){
     if (scrolling === false){
         document.getElementById(target + "scroll").value = document.getElementById(target).currentTime
     }
-    console.log(document.getElementById(target).currentTime)
 }
 
 PAfunc = function(input){
+    if (document.activeElement === document.getElementById(input.id + "scroll")){
+        return
+    }
     input.pause()
-    input.currentTime = 0;
+    input.currentTime = 0
+    scrolltarget = (input.id + "scroll")
+    document.getElementById(scrolltarget).value = 0
     document.querySelectorAll(".active-audio").forEach(activeaudio => activeaudio.classList.remove("active-audio"))
 }
 
@@ -20,7 +24,7 @@ audpause = function(target){
     document.getElementById(target).pause()
     document.getElementById(target).currentTime = 0
     document.getElementById(target + "img").classList.remove("active-audio")
-    clearInterval(songtick)
+    setTimeout(clearInterval(songtick), 10)
 }
 
 audplay = function(target){
@@ -49,7 +53,7 @@ seekonclick = function(){
 }
 
 seeksong = function(target, value){
-    try {clearInterval(songtick)} catch{}
+    try {audpause(target)} catch{}
     audplay(target)
     document.getElementById(target).currentTime = value
     scrolling = false
